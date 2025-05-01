@@ -1,8 +1,15 @@
+
+
+
+
+
+
 import os
 from aiogram import Router, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message, FSInputFile
 
+from databese import database as db
 from keyboards import evos_btn, evos_btn1, evos_btn2, evos_btnn, evos_btnn1, evos_btnn2
 
 handlers_router = Router()
@@ -10,6 +17,11 @@ handlers_router = Router()
 # O'zbek tili
 @handlers_router.message(CommandStart())
 async def command_start_handler(message: Message):
+    user = db.get_user(message.from_user.id)
+    if not user:
+        db.insert_user(first_name=message.from_user.first_name,
+                            last_name=message.from_user.last_name,
+                            telegram_id=message.from_user.id)
     img_path = os.path.join(os.path.dirname(__file__), "images", "img_1.png")
     img = FSInputFile(img_path)
     await message.answer_photo(photo=img, reply_markup=evos_btn)
