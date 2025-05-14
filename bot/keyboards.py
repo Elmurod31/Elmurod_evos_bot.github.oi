@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
-web_app = WebAppInfo(url="https://elmurod31.github.io/Elmurod_burger.github.io/")
+web_app = WebAppInfo(url="https://github.com/Elmurod31/Elmurod_evos_bot.github.oi")
 # Uzbek tili
 evos_btn = ReplyKeyboardMarkup(
     keyboard=[
