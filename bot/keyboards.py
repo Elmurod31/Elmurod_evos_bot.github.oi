@@ -1,5 +1,5 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
+web_app = WebAppInfo(url="https://elmurod31.github.io/Elmurod_burger.github.io/")
 # Uzbek tili
 evos_btn = ReplyKeyboardMarkup(
     keyboard=[
@@ -10,7 +10,7 @@ evos_btn = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Bo'sh ish o'rinlari")
         ],
-        [    KeyboardButton(text="Menu"),
+        [    KeyboardButton(text="Menu", web_app=web_app),
             KeyboardButton(text="Yangiliklar")
         ],
         [
