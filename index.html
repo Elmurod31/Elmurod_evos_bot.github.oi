@@ -5,13 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap Layout</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-light">
 
 <div class="container">
   <div class="row g-3">
+    <div class="col-12 bg-white d-flex">
+      <p class="text-center text-black p-3 m-0"><a class="nav-link" href="#scrollspyHeading1">First</a></p>
+
+      <p class="text-center text-black p-3 m-0"><a class="nav-link" href="#scrollspyHeading2">Second</a></p>
+
+      <p class="text-center text-black p-3 m-0"><a class="nav-link" href="#scrollspyHeading3">thirsday</a></p>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-5">
     <div class="col-6">
-      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
+      <img id="scrollspyHeading1" src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
       <h5 class="bg-white text-center m-0">Shaurma</h5>
       <h5 class="bg-white text-center m-0 pt-3">32 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -34,7 +45,7 @@
 
     <div class="row g-3 mt-3">
     <div class="col-6">
-      <img src="img_5.png" class="img-fluid w-100 h-50 bg-white ">
+      <img id="scrollspyHeading2" src="img_5.png" class="img-fluid w-100 h-50 bg-white ">
       <h5 class="bg-white text-center m-0">Burger</h5>
       <h5 class="bg-white text-center m-0 pt-3">27 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -56,7 +67,7 @@
     </div>
   <div class="row g-3 mt-3">
     <div class="col-6">
-      <img src="img_7.png" class="img-fluid w-100 h-50 bg-white ">
+      <img id="scrollspyHeading3" src="img_7.png" class="img-fluid w-100 h-50 bg-white ">
       <h5 class="bg-white text-center m-0">Hot dog</h5>
       <h5 class="bg-white text-center m-0 pt-3">19 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -77,11 +88,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 bg-black d-flex">
-      <h1 class="text-center text-white p-3 m-0">Shaurma</h1>
+    <div class="col-12 bg-white d-flex position-fixed bottom-0 end-0">
+      <h3 class="text-black p-3 m-0">Savatni ko'rish</h3>
     </div>
   </div>
 </div>
+
+
+
 
 
 <script>
@@ -99,5 +113,6 @@
     }
   }
 </script>
+
 </body>
 </html>
