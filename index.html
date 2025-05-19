@@ -22,7 +22,7 @@
 
   <div id="scrollspyHeading1" class="row g-3 mt-5">
     <div class="col-6">
-      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
+      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white">
       <h5 class="bg-white text-center m-0">Shaurma</h5>
       <h5 class="bg-white text-center m-0 pt-3">32 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="col-6">
-      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
+      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white">
       <h5 class="bg-white text-center m-0">Shaurma</h5>
       <h5 class="bg-white text-center m-0 pt-3">29 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="col-6">
-      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
+      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white">
       <h5 class="bg-white text-center m-0">Shaurma</h5>
       <h5 class="bg-white text-center m-0 pt-3">29 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="col-6">
-      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white ">
+      <img src="img_3.png" class="img-fluid w-100 h-50 bg-white">
       <h5 class="bg-white text-center m-0">Shaurma</h5>
       <h5 class="bg-white text-center m-0 pt-3">29 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -65,7 +65,7 @@
 
     <div id="scrollspyHeading2" class="row g-3 mt-3">
     <div class="col-6">
-      <img src="img_5.png" class="img-fluid w-100 h-50 bg-white ">
+      <img src="img_5.png" class="img-fluid w-100 h-50 bg-white">
       <h5 class="bg-white text-center m-0">Burger</h5>
       <h5 class="bg-white text-center m-0 pt-3">27 000 so'm</h5>
       <div class="bg-white text-center p-3 rounded-bottom">
@@ -150,7 +150,7 @@
     </div>
   </div>
 <div class="row">
-  <div class="col-12 bg-white d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 end-0 p-3 shadow">
+  <div id="cartBar" class="col-12 bg-white d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 end-0 p-3 shadow d-none">
     <h3 class="text-black m-0">Savatni ko'rish</h3>
     <button class="box p-2"><h5 class="m-0">Savatni ko'rish</h5></button>
   </div>
@@ -164,17 +164,36 @@
 
 
 <script>
+let totalCount = 0;
+
+  function updateCartVisibility() {
+    const cartBar = document.getElementById("cartBar");
+    if (totalCount > 0) {
+      cartBar.classList.remove("d-none");
+    } else {
+      cartBar.classList.add("d-none");
+    }
+  }
+
   function increment(button) {
     const countSpan = button.previousElementSibling;
     let count = parseInt(countSpan.textContent);
-    countSpan.textContent = count + 1;
+    count++;
+    countSpan.textContent = count;
+
+    totalCount++;
+    updateCartVisibility();
   }
 
   function decrement(button) {
     const countSpan = button.nextElementSibling;
     let count = parseInt(countSpan.textContent);
     if (count > 0) {
-      countSpan.textContent = count - 1;
+      count--;
+      countSpan.textContent = count;
+
+      totalCount--;
+      updateCartVisibility();
     }
   }
 </script>
