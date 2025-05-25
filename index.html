@@ -163,16 +163,19 @@
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-
 <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand(); // Telegram oynasini to'liq ochish
     let totalCount = 0;
 
-    function updateCartVisibility() {
-        const cartBar = document.getElementById("cartBar");
-        if (totalCount > 0) {
-            cartBar.classList.remove("d-none");
+    function updateMainButton() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+        let text = "Buyurtmani yuborish";
+        if (Object.keys(cart).length === 0) {
+            tg.MainButton.hide();
         } else {
-            cartBar.classList.add("d-none");
+            tg.MainButton.setText(text);
+            tg.MainButton.show();
         }
     }
 
@@ -198,9 +201,7 @@
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartVisibility();
-
-
+        updateMainButton();
     }
 
     function decrement(button) {
@@ -223,12 +224,31 @@
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartVisibility();
-            miy
+            updateMainButton();
         }
     }
 
+    // MainButton bosilganda ma'lumot yuboriladi
+    tg.MainButton.onClick(() => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || {};
+        let items = [];
+
+        for (let name in cart) {
+            items.push({
+                name: name,
+                price: cart[name].price,
+                count: cart[name].count
+            });
+        }
+
+        // Botga JSON ko‘rinishida yuboriladi
+        tg.sendData(JSON.stringify(items));
+    });
+
+    // Boshlanishda MainButton holatini tekshirish
+    updateMainButton();
 </script>
+
 
 
 </body>
