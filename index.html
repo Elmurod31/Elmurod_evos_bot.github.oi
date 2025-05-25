@@ -230,20 +230,22 @@
 
     // MainButton bosilganda ma'lumot yuboriladi
     tg.MainButton.onClick(() => {
-        const cart = JSON.parse(localStorage.getItem("cart")) || {};
-        let items = [];
+    const cart = JSON.parse(localStorage.getItem("cart")) || {};
+    let items = [];
 
-        for (let name in cart) {
-            items.push({
-                name: name,
-                price: cart[name].price,
-                count: cart[name].count
-            });
-        }
+    for (let name in cart) {
+        items.push({
+            name: name,
+            price: cart[name].price,
+            count: cart[name].count
+        });
+    }
 
-        // Botga JSON ko‘rinishida yuboriladi
-        tg.sendData(JSON.stringify(items));
-    });
+    tg.sendData(JSON.stringify(items)); // Telegram botga JSON yuborish
+
+    localStorage.removeItem("cart"); // ← Faqat cart’ni tozalash
+    updateMainButton(); // Tugmani yashirish
+});
 
     // Boshlanishda MainButton holatini tekshirish
     updateMainButton();
