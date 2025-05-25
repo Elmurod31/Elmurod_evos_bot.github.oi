@@ -53,5 +53,5 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    print("Bot starting...........")
+    print("Bot starting.........")
     asyncio.run(main())
