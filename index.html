@@ -229,23 +229,30 @@
     }
 
     // MainButton bosilganda ma'lumot yuboriladi
-    tg.MainButton.onClick(() => {
+tg.MainButton.onClick(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || {};
     let items = [];
 
     for (let name in cart) {
         items.push({
             name: name,
-            price: cart[name].price,
-            count: cart[name].count
+            price: cart[name].price, // string formatda saqlangan bo‘lishi kerak
+            count: parseInt(cart[name].count)
         });
     }
 
-    tg.sendData(JSON.stringify(items)); // Telegram botga JSON yuborish
+    tg.sendData(JSON.stringify(items));
 
-    localStorage.removeItem("cart"); // ← Faqat cart’ni tozalash
-    updateMainButton(); // Tugmani yashirish
+    // localStorage tozalash
+    localStorage.removeItem("cart");
+
+    // UI yangilash
+    document.querySelectorAll(".counter span").forEach(span => {
+        span.textContent = "0";
+    });
+    updateMainButton();
 });
+
 
     // Boshlanishda MainButton holatini tekshirish
     updateMainButton();
