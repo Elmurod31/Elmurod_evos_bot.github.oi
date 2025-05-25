@@ -1,60 +1,29 @@
-  <!DOCTYPE html>
-  <html lang="uz">
-  <head>
-    <meta charset="UTF-8">
-    <title>Savat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body class="bg-light">
+<script>
+  const tg = window.Telegram.WebApp;
+  tg.expand(); // Sahifani to‘liq holatga keltiradi
 
-  <div class="container mt-5">
-    <h2 class="mb-4">Savatchadagi mahsulotlar</h2>
-    <div id="cartItems" class="row"></div>
-  </div>
-  <div class="text-center mt-4">
-    <button class="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2" style="font-size: 18px;" onclick="payWithClick()">
-      <img src="https://click.uz/click/images/logo.svg" alt="Click" style="height: 24px;">
-      Click orqali to‘lash
-    </button>
-  </div>
+  // Savatchani olish
+  const cart = JSON.parse(localStorage.getItem("cart")) || {};
 
+  // Agar savatchada mahsulot bo‘lsa, MainButton ko‘rsatamiz
+  if (Object.keys(cart).length > 0) {
+    tg.MainButton.setText("To‘lovni amalga oshirish 💳");
+    tg.MainButton.show();
 
-  <script>
-    const cart = JSON.parse(localStorage.getItem("cart")) || {};
-    const cartItemsDiv = document.getElementById("cartItems");
-    if (Object.keys(cart).length === 0) {
-      cartItemsDiv.innerHTML = "<p>Savatcha bo‘sh.</p>";
-    } else {
+    // Tugma bosilganda ma'lumot yuboramiz
+    tg.MainButton.onClick(function() {
+      const products = [];
+
       for (let name in cart) {
-        const { price, count } = cart[name];
-        const item = document.createElement("div");
-        item.className = "col-12 mb-3";
-        item.innerHTML = `
-          <div class="card p-3">
-            <h5>${name}</h5>
-            <p>Narxi: ${price} so'm</p>
-            <p>Soni: ${count}</p>
-            <p>Jami: ${price * count} so'm</p>
-          </div>
-        `;
-        cartItemsDiv.appendChild(item);
-        window.addEventListener("beforeunload", function () {
-    localStorage.removeItem("cart");
-
-
-  });
+        products.push({
+          name: name,
+          count: cart[name].count,
+          price: cart[name].price
+        });
       }
-    }
-    let tg = window.Telegram.WebApp;
 
-
-    Telegram.WebApp.onEvent("mainButtonClicked", function () {
-      data = item1 + "|" + item2 + "|" + item3 + "|" + item4
-      tg.sendData(data);
-  });
-
-  </script>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="app.js"></script>
-  </body>
-  </html>
+      // Ma'lumotni JSON formatda yuboramiz
+      tg.sendData(JSON.stringify(products));
+    });
+  }
+</script>
