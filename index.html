@@ -233,7 +233,7 @@
             count: data.count
         }));
 
-        tg.sendData(items); // JSON ko‘rinishida botga yuborish
+        tg.sendData(JSON.stringify(items)); // JSON ko‘rinishida botga yuborish
 
         // Storage tozalash
         localStorage.removeItem("cart");
