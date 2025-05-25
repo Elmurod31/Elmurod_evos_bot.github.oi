@@ -1,10 +1,10 @@
 import asyncio
+import json
 from os import getenv
 from aiogram import Dispatcher, Bot, F
 from aiogram.types import Message, PreCheckoutQuery, LabeledPrice
 from dotenv import load_dotenv
 
-from products import products
 from handlers import handlers_router
 
 load_dotenv()
@@ -16,26 +16,18 @@ dp.include_router(handlers_router)
 
 
 @dp.message(F.func(lambda msg: msg.web_app_data if msg.web_app_data else None))
-async def get_web_app_data(message: Message, CLICK=None):
+async def get_web_app_data(message: Message):
 
-    data = message.web_app_data.data
-    web_products = data.split("|")
-    result = []
-    for web_product in web_products:
-        if web_product:
-            p_id = web_product.split("/")[0]
-            p_count = web_product.split("/")[1]
-            product = products.get(p_id)
-            product["count"] = int(p_count)
-            result.append(product)
+    products = json.loads(message.web_app_data.data)
+    print(f"DATA: {products}")
     await bot.send_invoice(
         chat_id=message.chat.id,
         title="To'lov",
         description="Mahsulotlar uchun to'lov",
         payload="Maxfiy malumot",
         currency="UZS",
-        prices=[LabeledPrice(label=f"{p['name']} ({p['count']})", amount=100 * (p['count'] * p['price']))
-                for p in result],
+        prices=[LabeledPrice(label=p['name'], amount=(int(p['price']) * p['count'] * 100))
+                for p in products],
         provider_token=CLICK,
         max_tip_amount=50000000,
         suggested_tip_amounts=[500000, 1000000, 2000000],
