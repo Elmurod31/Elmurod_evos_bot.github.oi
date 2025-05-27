@@ -9,7 +9,7 @@ from aiogram import Router, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message, FSInputFile
 
-from databese import database as db
+from database import database as db
 from keyboards import evos_btn, evos_btn1, evos_btn2, evos_btnn, evos_btnn1, evos_btnn2
 
 handlers_router = Router()
