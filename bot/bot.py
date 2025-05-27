@@ -13,7 +13,8 @@ load_dotenv()
 dp = Dispatcher()
 TOKEN = getenv("TOKEN")
 CLICK = getenv("CLICK")
-bot = Bot (token=TOKEN)
+# bot = Bot (token=TOKEN)
+bot = Bot(token=TOKEN, session=session)
 dp.include_router(handlers_router)
 
 
@@ -50,8 +51,7 @@ async def successful_payment(msg: Message):
 
 
 async def main() -> None:
-    # bot = Bot(token=TOKEN)
-    bot = Bot(token=TOKEN, session=session)
+
     await dp.start_polling(bot)
 
 
