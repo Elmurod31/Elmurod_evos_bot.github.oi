@@ -5,6 +5,8 @@ from aiogram import Dispatcher, Bot, F
 from aiogram.types import Message, PreCheckoutQuery, LabeledPrice
 from dotenv import load_dotenv
 
+from aiogram.client.session.aiohttp import AiohttpSession
+session = AiohttpSession(proxy="http://proxy.server:3128")
 from handlers import handlers_router
 
 load_dotenv()
@@ -48,7 +50,8 @@ async def successful_payment(msg: Message):
 
 
 async def main() -> None:
-    bot = Bot(token=TOKEN)
+    # bot = Bot(token=TOKEN)
+    bot = Bot(token=TOKEN, session=session)
     await dp.start_polling(bot)
 
 
