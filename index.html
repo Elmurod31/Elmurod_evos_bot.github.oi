@@ -5,59 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap Layout</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-light">
 
-<div class="container">
-<!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img_4.png" alt="Los Angeles" class="d-block" style="width:100%">
-      <div class="carousel-caption">
-        <h3>Los Angeles</h3>
-        <p>We had such a great time in LA!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img_4.png" alt="Chicago" class="d-block" style="width:100%">
-      <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img_4.png" alt="New York" class="d-block" style="width:100%">
-      <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>We love the Big Apple!</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
 
 <div class="container-fluid mt-3">
-  <h3>Carousel Example</h3>
-  <p>The following example shows how to create a basic carousel with indicators and controls.</p>
+
+
+<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-flex align-items-center justify-content-center vh-100">
+        <img src="img_3.png" class="img-fluid w-100 h-100 object-fit-cover" alt="...">
+        <h1 class="position-absolute text-white bg-dark bg-opacity-50 px-4 py-2 rounded">Shaurma</h1>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-flex align-items-center justify-content-center vh-100">
+        <img src="img_13.png" class="img-fluid w-100 h-100 object-fit-cover" alt="...">
+        <h1 class="position-absolute text-white bg-dark bg-opacity-50 px-4 py-2 rounded">Burger</h1>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-flex align-items-center justify-content-center vh-100">
+        <img src="img_20.png" class="img-fluid w-100 h-100 object-fit-cover" alt="...">
+        <h1 class="position-absolute text-white bg-dark bg-opacity-50 px-4 py-2 rounded">Hot dog</h1>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+
+
+
     <div class="row g-3">
         <div class="col-12 bg-white d-flex">
             <p class="text-center text-black p-3 m-0"><a class="nav-link" href="#scrollspyHeading1">Shaurma</a></p>
